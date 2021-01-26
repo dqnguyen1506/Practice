@@ -19,5 +19,6 @@ class Solution {
         int[] nums = new int[]{3,2,4}; 
         Solution sol = new Solution();
         int[] result = sol.twoSum(nums,6);
+        System.out.println("hello");
     }
 }
