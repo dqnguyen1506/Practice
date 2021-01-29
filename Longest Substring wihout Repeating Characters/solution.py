@@ -10,12 +10,10 @@ class Solution(object):
         i = 0
         for j in range (len(s)):
             if s[j] in mp:
-                i = max(mp[s[j]], i)
-            answer = max(answer, j - i + 1)
+                i = max(i, mp[s[j]])
             mp[s[j]] = j + 1
+            answer = max(answer, j - i + 1)
         print(answer)
-        for x,y in mp.items():
-            print(x,y)
         
 
 
