@@ -1,5 +1,3 @@
-import math
-
 class Solution(object):
     def convert(self, s, numRows):
         """
@@ -18,10 +16,6 @@ class Solution(object):
                 num += 1
                 if (num == numRows):
                     num = (numRows - 2) * - 1
-                    
-                    print("num: ", num)
-
-                
                 list1 = mp[abs(num)]
                 list1.append(index)
                 mp[abs(num)] = list1
@@ -32,18 +26,6 @@ class Solution(object):
                     return s
         answer = ''
         for x,y in mp.items():
-            print(x,y)
             for i in y:
                 answer += s[i]
-        print(answer)
         return answer
-                
-        
-            
-
-                    
-              
-                    
-                    
-sol = Solution()
-sol.convert("AB", 1)
