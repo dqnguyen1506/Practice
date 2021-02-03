@@ -10,15 +10,15 @@ class Solution(object):
             return s
         currRow = 0
         delta = -1
-        res = [[] for i in range(numRows)]
+        res = [[] for i in range(numRows)]              #initilize the list of lists *
         for char in s:
             print(currRow)
             res[currRow].append(char)
-            if(currRow == 0 or currRow == numRows - 1):
-                delta *= -1
-            currRow += delta
+            if(currRow == 0 or currRow == numRows - 1): #if current row hits the beginning or the end
+                delta *= -1                             #change direction
+            currRow += delta                                
         answer = ''
-        for i in res:
+        for i in res:                                   #join the lists
             answer += ''.join(i)
         print (answer)
         return answer
