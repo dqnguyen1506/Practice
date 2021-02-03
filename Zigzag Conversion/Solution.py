@@ -5,27 +5,24 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        list1 = []
-        num = -1
-        index = 0
-        mp = {}
-        for i in range(numRows):
-            mp[i] = []
-        while (index < len(s)):
-            for y in range(numRows):
-                num += 1
-                if (num == numRows):
-                    num = (numRows - 2) * - 1
-                list1 = mp[abs(num)]
-                list1.append(index)
-                mp[abs(num)] = list1
-                index += 1
-                if(index == len(s)):
-                    break
-                if(numRows == 1):
-                    return s
+
+        if (numRows == 1):
+            return s
+        currRow = 0
+        delta = -1
+        res = [[] for i in range(numRows)]
+        for char in s:
+            print(currRow)
+            res[currRow].append(char)
+            if(currRow == 0 or currRow == numRows - 1):
+                delta *= -1
+            currRow += delta
         answer = ''
-        for x,y in mp.items():
-            for i in y:
-                answer += s[i]
+        for i in res:
+            answer += ''.join(i)
+        print (answer)
         return answer
+
+        
+sol = Solution()
+sol.convert("PAYPALISHIRING", 4)
