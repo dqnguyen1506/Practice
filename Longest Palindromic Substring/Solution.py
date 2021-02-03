@@ -4,22 +4,23 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        if(len(s) == 1 or len(s) == 2):
+        if(len(s) == 1):
             return s[0]
+        list1 = []
         mp = {}
-        ret_mp = {}
         i = 0
-        for j in range (len(s)):
-            mp[s[j]] = j
-            if(s[i] in mp and s[i] == s[j]):
-                ret_mp[j + 1 -i] = s[i:j + 1]
-                print("s[i] ", s[i])
-                i += 1
-        print(ret_mp)
-                
-             
-        
-        
-
+        length = 0
+        answer = ''
+        for x in range (len(s)):
+            list1.clear()
+            for y in range(len(s)):
+                if(y >= x):
+                    list1.append(s[y])
+                    list2 = list1[::-1]
+                    if(list1 == list2 and len(list1) > length):
+                        length = len(list1)
+                        answer = ''.join(list1)
+        print(answer)
+        return answer                       
 sol = Solution()
-sol.longestPalindrome("babad")
+sol.longestPalindrome("bb")
