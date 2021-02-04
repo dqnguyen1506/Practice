@@ -4,23 +4,32 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        list1 = []
-        length = 0
-        answer = ''
-        for x in range (len(s)):
-            list1.append(s[x])
-            for y in range(x+1,len(s)):
-                list1.append(s[y])
-                list2 = list1[::-1]
-                if(list1 == list2 and len(list1) > length):
-                    length = len(list1)
-                    answer = ''.join(list1)
-                if(y == len(s) - 1):
-                    list1 = []
-        if(len(s) == 1 or length == 1):
-            return s[0]
-        print(answer)
-        return answer                       
+        if(len(s) < 1):
+            return ""
+        start = 0 
+        end = 0
+        for i in range (len(s)):
+            len1 = self.expandFromMiddle(s, i, i)
+            len2 = self.expandFromMiddle(s, i, i + 1)
+            length = max(len1, len2)
+            print("len1: ", len1)
+            print("len2: ", len2)
+            if (length > (end - start)):        #racecar #abaaba
+                start = i - ((length - 1)//2)
+                end = i + (length //2)
+        print(start, end)
+        return s[start:end + 1]
+    def expandFromMiddle(self, s, left, right):
+        if(len(s) == 0 or left > right):
+            return 0
+        while(left >= 0 and right < len(s) and s[left] == s[right]):
+            left -= 1
+            right += 1
+            #print(left)
+            #print(right)
+        return right - left - 1
 sol = Solution()
-print(sol.longestPalindrome("ac"))
+answer = sol.longestPalindrome("racecar")
+print(answer)
+
 
