@@ -1,5 +1,5 @@
 class Solution(object):
-    def longestPalindrome(self, s):
+    def longestPalindromeSubseq(self, s):
         """
         :type s: str
         :rtype: str
@@ -8,6 +8,7 @@ class Solution(object):
             return ""
         start = 0 
         end = 0
+        length = 0
         for i in range (len(s)):
             len1 = self.expandFromMiddle(s, i, i)               #handle case 1: "racecar" ==> with 'e' in the center
             len2 = self.expandFromMiddle(s, i, i + 1)           #handle case 2: "babbab" ==> "bb" in the center
@@ -17,8 +18,8 @@ class Solution(object):
             if (length > (end - start)):                        #if there is a longer palindrome, adjust the start and end to the new palindrome
                 start = i - ((length - 1)//2)
                 end = i + (length //2)
-        #print(start, end)
-        return s[start:end + 1]
+        print(end-start + 1)
+        return end - start + 1
     def expandFromMiddle(self, s, left, right):
         if(len(s) == 0 or left > right):                        
             return 0
@@ -29,7 +30,7 @@ class Solution(object):
             #print(right)
         return right - left - 1                                 # "- 1" b/c when 'while' loop ends, left = -1/ right = len(s) ==> not the correct indices
 sol = Solution()
-answer = sol.longestPalindrome("")
+answer = sol.longestPalindromeSubseq("cbbd")
 print(answer)
 
 
