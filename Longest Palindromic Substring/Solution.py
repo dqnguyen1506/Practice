@@ -29,7 +29,7 @@ class Solution(object):
             #print(right)
         return right - left - 1                                 # "- 1" b/c when 'while' loop ends, left = -1/ right = len(s) ==> not the correct indices
 sol = Solution()
-answer = sol.longestPalindrome("hello")
+answer = sol.longestPalindrome("")
 print(answer)
 
 
